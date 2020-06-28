@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Note</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/gradient.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/aff9866255.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+      <div class="bg"></div>
+      <main class="wrapper">
+        <div class="container d-flex flex-direction-column">
+          <div class="inputSection">
+            <input type="text" placeholder="Add a note" id="input"/>
+          </div>
+          <div class="noteSection d-flex flex-direction-column" id="notes">
+            <div class="notCompleted">
+              <div class="title">
+                <p>Not Completed</p>
+              </div>
+              <div class="notes" id="notCompletedNotes">
+
+              </div>
+            </div>
+            <div class="Completed">
+              <div class="title">
+                <p>Completed</p>
+              </div>
+              <div class="notes" id="CompletedNotes">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <script src="js/note.js"></script>
+  </body>
+</html>
