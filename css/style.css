@@ -9,10 +9,6 @@ html, body{
 body{
   position: relative;
 }
-.bg{
-  filter: blur(10px);
-  height: 100vh;
-}
 .d-flex{
   display: flex;
 }
@@ -40,7 +36,6 @@ body{
   left: 0;
   width: 100vw;
   height: 100vh;
-  overflow: scroll;
 }
 .container{
   width: 100%;
@@ -96,4 +91,10 @@ body{
 }
 .checkBoxNoteMenu{
   margin-left: 29px;
+}
+.descriptionNote, .descriptionNote > input{
+  width: 100%;
+}
+.descriptionNote > input {
+
 }

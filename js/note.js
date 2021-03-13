@@ -32,28 +32,8 @@ function completedNote(text){
     return note;
 }
 
-document.getElementById('input').addEventListener('keyup', function(event){
-  if(event.keyCode == 13){
-    inputValue = document.getElementById('input').value;
-    if(inputValue != ''){
-      document.getElementById('input').value = '';
-      document.getElementById('notCompletedNotes').innerHTML += newNote(inputValue);
-    }
-  }
-});
-document.getElementById('input').addEventListener('keyup', function(event){
-  if(event.keyCode == 13){
-    inputValue = document.getElementById('input').value;
-    if(inputValue != ''){
-      document.getElementById('input').value = '';
-      document.getElementById('notCompletedNotes').innerHTML += newNote(inputValue);
-    }
-  }
-});
-
 function deleteNote(button){
-  var controlsNote = button.parentNode;
-  var note = controlsNote.parentNode;
+  var note = button.parentNode.parentNode;
   note.style.opacity = "0";
   setTimeout(function(){
     note.parentNode.removeChild(note);
@@ -61,24 +41,48 @@ function deleteNote(button){
 }
 
 function completeNote(button){
-  var controlsNote = button.parentNode;
-  var noteInner = controlsNote.parentNode;
-  var descriptionNote = noteInner.children[1].innerHTML;
+  var descriptionNote = button.parentNode.parentNode.children[1].innerHTML;
   document.getElementById('CompletedNotes').innerHTML += completedNote(descriptionNote);
   deleteNote(button);
 }
 
 function editNote(button){
-  var controlsNote = button.parentNode;
-  var note = controlsNote.parentNode;
-  var descriptionNote = note.children[1];
+  var descriptionNote = button.parentNode.parentNode.children[1];
   var textNote = descriptionNote.firstElementChild.innerHTML;
   var inputText = '<input type="text" value="' +textNote +'"/>';
   var editNoteText = '<p>' +textNote +'</p>';
   if(descriptionNote.innerHTML == editNoteText){
     descriptionNote.innerHTML = '';
-    descriptionNote.innerHTML = '<input type="text" value="' +textNote +'"/>';
+    descriptionNote.innerHTML = '<input type="text" id="editnote" value="' +textNote +'"/>';
+    document.getElementById('editnote').addEventListener('keyup', function(event){
+      if(event.keyCode == 13){
+        inputValue = document.getElementById('editnote').value;
+        if(inputValue != ''){
+          document.getElementById('editnote').parentElement.innerHTML = '<p>' +inputValue +'</p>';
+        }
+      }
+    });
   }else if(descriptionNote.getElementsByTagName('INPUT')){
     descriptionNote.innerHTML ='<p>' +descriptionNote.firstElementChild.value +'</p>';
   }
 }
+
+document.getElementById('input').addEventListener('keyup', function(event){
+  if(event.keyCode == 13){
+    inputValue = document.getElementById('input').value;
+    if(inputValue != ''){
+      document.getElementById('input').value = '';
+      document.getElementById('notCompletedNotes').innerHTML += newNote(inputValue);
+    }
+  }
+});
+
+document.getElementById('input').addEventListener('keyup', function(event){
+  if(event.keyCode == 13){
+    inputValue = document.getElementById('input').value;
+    if(inputValue != ''){
+      document.getElementById('input').value = '';
+      document.getElementById('notCompletedNotes').innerHTML += newNote(inputValue);
+    }
+  }
+});
